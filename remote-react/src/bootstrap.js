@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 // Mount function to start up the app
 const mount = (el) => {
   const appRoot = createRoot(el);
-  appRoot.render(<h1>The Remote-react!</h1>);
+  appRoot.render(<h1>The remote-react!</h1>);
 };
 
 // If in development and in isolation call mount immediately
