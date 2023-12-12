@@ -6,18 +6,21 @@ const packageJson = require("../package.json");
 
 const devConfig = {
   mode: "development",
+  output: {
+    publicPath: "http://localhost:8082/",
+  },
   devServer: {
-    port: 8080,
+    port: 8082,
     historyApiFallback: {
-      index: "index.html",
+      index: "/index.html",
     },
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "host_react",
-      remotes: {
-        rr: "remote_react@http://localhost:8081/remoteEntry.js",
-        rv: "remote_vue@http://localhost:8082/remoteEntry.js",
+      name: "remote_vue",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./RemoteVueApp": "./src/bootstrap",
       },
       shared: packageJson.dependencies,
     }),
