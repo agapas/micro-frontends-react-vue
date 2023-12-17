@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import {
   createTheme,
@@ -23,15 +24,25 @@ const theme = createTheme({
 });
 
 const App = () => {
+  const [remoteType, setRemoteType] = useState("React");
   return (
     <div>
       <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Header />
-          <RemoteReactApp theme={theme} />
-        </ThemeProvider>
-        <RemoteVueApp />
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Header
+              remoteType={remoteType}
+              onRemoteChange={() =>
+                setRemoteType(remoteType === "React" ? "Vue" : "React")
+              }
+            />
+            <Routes>
+              <Route path="other-remote" element={<RemoteVueApp />} />
+              <Route index element={<RemoteReactApp theme={theme} />} />
+            </Routes>
+          </ThemeProvider>
+        </BrowserRouter>
       </StyledEngineProvider>
     </div>
   );

@@ -3,8 +3,14 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
+import { Link as RouterLink } from "react-router-dom";
 
-const Header = ({ remoteType = "React" }) => {
+const Header = ({ remoteType, onRemoteChange }) => {
+  const onOtherRemoteClick = () => {
+    if (onRemoteChange) {
+      onRemoteChange();
+    }
+  };
   return (
     <AppBar
       position="relative"
@@ -12,7 +18,14 @@ const Header = ({ remoteType = "React" }) => {
       sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
     >
       <Toolbar>
-        <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
+        <Typography
+          variant="h6"
+          color="inherit"
+          noWrap
+          sx={{ flexGrow: 1, textDecoration: "none" }}
+          component={RouterLink}
+          to="/"
+        >
           {`The Remote in ${remoteType}`}
         </Typography>
         <nav>
@@ -21,6 +34,9 @@ const Header = ({ remoteType = "React" }) => {
             color="inherit"
             href="#"
             sx={{ my: 1, mx: 1.5 }}
+            component={RouterLink}
+            to={remoteType === "React" ? "/other-remote" : "/"}
+            onClick={onOtherRemoteClick}
           >
             Other Remote
           </Link>
