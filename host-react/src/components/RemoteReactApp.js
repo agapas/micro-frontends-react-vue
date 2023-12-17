@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
-const RemoteReactApp = () => {
+const RemoteReactApp = (props) => {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ const RemoteReactApp = () => {
       (async () => {
         try {
           const { mount } = await import("rr/RemoteReactApp");
-          mount(ref.current);
+          mount(ref.current, { ...props });
         } catch (err) {
           console.log(err);
         }
@@ -18,7 +18,9 @@ const RemoteReactApp = () => {
 
     // an old way, but looks more readable
     import("rr/RemoteReactApp")
-      .then(({ mount }) => mount(ref.current))
+      .then(({ mount }) => {
+        mount(ref.current, { ...props });
+      })
       .catch((err) => console.log(err));
   }, []);
 
