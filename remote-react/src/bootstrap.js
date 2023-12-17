@@ -1,10 +1,11 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import App from "./App";
 
 // Mount function to start up the app
 const mount = (el) => {
   const appRoot = createRoot(el);
-  appRoot.render(<h1>The remote-react!</h1>);
+  appRoot.render(<App />);
 };
 
 // If in development and in isolation call mount immediately
