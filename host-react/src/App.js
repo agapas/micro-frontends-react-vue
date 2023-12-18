@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { blueGrey } from "@mui/material/colors";
 import CssBaseline from "@mui/material/CssBaseline";
 import {
   createTheme,
   ThemeProvider,
   StyledEngineProvider,
 } from "@mui/material/styles";
-import { blueGrey } from "@mui/material/colors";
+import { unstable_ClassNameGenerator as ClassNameGenerator } from "@mui/material/utils";
 
 import Header from "./components/Header";
 import RemoteReactApp from "./components/RemoteReactApp";
 import RemoteVueApp from "./components/RemoteVueApp";
+
+ClassNameGenerator.configure((componentName) => `ho-${componentName}`);
 
 const theme = createTheme({
   palette: {

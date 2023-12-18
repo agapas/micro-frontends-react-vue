@@ -114,7 +114,7 @@ export default function Landing() {
         <Container sx={{ py: 6 }} maxWidth="md">
           <Grid container spacing={4}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+              <Grid item key={card} xs={12} sm={6} md={4} sx={{ pt: 4, pl: 4 }}>
                 <Card
                   sx={{
                     height: "100%",
@@ -153,11 +153,16 @@ export default function Landing() {
         component="footer"
         sx={{
           borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-          mt: 8,
-          py: [3, 6],
+          mt: 6,
+          py: [2, 6],
         }}
       >
-        <Grid container spacing={4} justifyContent="space-evenly">
+        <Grid
+          container
+          spacing={4}
+          justifyContent="space-evenly"
+          sx={{ ml: 0, mt: 0 }}
+        >
           {footers.map((footer) => (
             <Grid item xs={6} sm={3} key={footer.title}>
               <Typography variant="h6" color="text.primary" gutterBottom>
