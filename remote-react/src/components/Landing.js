@@ -4,15 +4,12 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import { blueGrey } from "@mui/material/colors";
 
 function Copyright(props) {
   return (
@@ -72,30 +69,14 @@ const footers = [
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const defaultTheme = createTheme();
-/*
-  // Or use the same default theme like in the Host app
-  const defaultTheme = createTheme({
-    palette: {
-      primary: {
-        main: "#455a64",
-      },
-      background: {
-        paper: blueGrey[50],
-      },
-    },
-  });
-*/
-
-export default function Landing({ theme }) {
+export default function Landing() {
   return (
-    <ThemeProvider theme={theme || defaultTheme}>
-      <CssBaseline />
+    <>
       <main>
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: "background.paper",
+            bgcolor: (theme) => theme.palette.background.paper,
             pt: 5,
             pb: 4,
           }}
@@ -197,6 +178,6 @@ export default function Landing({ theme }) {
         <Copyright sx={{ mt: 5 }} />
       </Container>
       {/* End footer */}
-    </ThemeProvider>
+    </>
   );
 }
