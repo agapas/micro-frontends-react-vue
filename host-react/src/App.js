@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Routes,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
 import { blueGrey } from "@mui/material/colors";
 import CssBaseline from "@mui/material/CssBaseline";
 import {
@@ -7,12 +13,13 @@ import {
   ThemeProvider,
   StyledEngineProvider,
 } from "@mui/material/styles";
-import { unstable_ClassNameGenerator as ClassNameGenerator } from "@mui/material/utils";
+import { unstable_ClassNameGenerator as ClassNameGenerator } from "@mui/material/className";
 
 import Header from "./components/Header";
 import RemoteReactApp from "./components/RemoteReactApp";
 import RemoteVueApp from "./components/RemoteVueApp";
 
+// to avoid styles collision
 ClassNameGenerator.configure((componentName) => `ho-${componentName}`);
 
 const theme = createTheme({
@@ -26,29 +33,42 @@ const theme = createTheme({
   },
 });
 
-const App = () => {
-  const [remoteType, setRemoteType] = useState("React");
+const Layout = () => {
+  const location = useLocation();
+  const defaultRemote =
+    location.pathname.indexOf("other-remote") > -1 ? "Vue" : "React";
+
+  const [remoteType, setRemoteType] = useState(defaultRemote);
+
+  const onRemoteChange = () => {
+    setRemoteType(remoteType === "React" ? "Vue" : "React");
+  };
+
   return (
-    <div>
+    <>
       <StyledEngineProvider injectFirst>
-        <BrowserRouter>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Header
-              remoteType={remoteType}
-              onRemoteChange={() =>
-                setRemoteType(remoteType === "React" ? "Vue" : "React")
-              }
-            />
-            <Routes>
-              <Route path="other-remote" element={<RemoteVueApp />} />
-              <Route index element={<RemoteReactApp theme={theme} />} />
-            </Routes>
-          </ThemeProvider>
-        </BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Header remoteType={remoteType} onRemoteChange={onRemoteChange} />
+        </ThemeProvider>
       </StyledEngineProvider>
-    </div>
+      <Outlet context={{ theme, remote: [remoteType, setRemoteType] }} />
+    </>
   );
 };
 
-export default App;
+const router = createBrowserRouter([
+  {
+    Component: Layout,
+    children: [
+      { path: "/", Component: RemoteReactApp },
+      { path: "other-remote", Component: RemoteVueApp },
+      { path: "*", Component: Root },
+    ],
+  },
+]);
+
+const HostApp = () => <RouterProvider router={router} />;
+const Root = () => <Routes />;
+
+export default HostApp;

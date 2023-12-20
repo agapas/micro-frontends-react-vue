@@ -1,7 +1,9 @@
 import React, { useRef, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 
-const RemoteReactApp = (props) => {
+const RemoteReactApp = () => {
   const ref = useRef(null);
+  const { theme } = useOutletContext();
 
   useEffect(() => {
     /*
@@ -9,18 +11,16 @@ const RemoteReactApp = (props) => {
       (async () => {
         try {
           const { mount } = await import("rr/RemoteReactApp");
-          mount(ref.current, { ...props });
+          mount(ref.current, { theme })
         } catch (err) {
           console.log(err);
         }
       })();
     */
 
-    // an old way, but looks more readable
+    // an old way, but it looks shorter and more readable
     import("rr/RemoteReactApp")
-      .then(({ mount }) => {
-        mount(ref.current, { ...props });
-      })
+      .then(({ mount }) => mount(ref.current, { theme }))
       .catch((err) => console.log(err));
   }, []);
 

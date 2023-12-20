@@ -26,7 +26,7 @@ const Header = ({ remoteType, onRemoteChange }) => {
           component={RouterLink}
           to="/"
         >
-          {`The Remote in ${remoteType}`}
+          {remoteType ? `The Remote in ${remoteType}` : "The Remote"}
         </Typography>
         <nav>
           <Link
@@ -35,7 +35,7 @@ const Header = ({ remoteType, onRemoteChange }) => {
             href="#"
             sx={{ my: 1, mx: 1.5 }}
             component={RouterLink}
-            to={remoteType === "React" ? "/other-remote" : "/"}
+            to={remoteType === "React" ? "other-remote" : "/"}
             onClick={onOtherRemoteClick}
           >
             Other Remote
