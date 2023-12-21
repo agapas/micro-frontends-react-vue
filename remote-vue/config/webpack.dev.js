@@ -15,6 +15,24 @@ const devConfig = {
       index: "/index.html",
     },
   },
+  module: {
+    rules: [
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: "style-loader",
+            options: {
+              esModule: false,
+            },
+          },
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
+      },
+    ],
+  },
   plugins: [
     new ModuleFederationPlugin({
       name: "remote_vue",

@@ -1,9 +1,11 @@
 import { createApp } from "vue";
-import Dummy from "./components/Dummy.vue";
+import PrimeVue from "primevue/config";
+import PricingPlans from "./components/PricingPlans.vue";
 
 // Mount function to start up the app
 const mount = (el) => {
-  const app = createApp(Dummy);
+  const app = createApp(PricingPlans);
+  app.use(PrimeVue);
   app.mount(el); // mount function from vue
 };
 
