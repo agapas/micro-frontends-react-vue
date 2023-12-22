@@ -10,11 +10,11 @@
         <h2>Basic</h2>
         <div class="price">FREE</div>
         <ul class="features">
-          <li><i class="fas fa-check-circle"></i> Unlimited Websites</li>
-          <li><i class="fas fa-check-circle"></i> 1 User</li>
-          <li><i class="fas fa-check-circle"></i> 100MB Space/website</li>
-          <li><i class="fas fa-check-circle"></i> Continuous deployment</li>
-          <li><i class="fas fa-times-circle"></i> No priority support</li>
+          <li>Unlimited Websites</li>
+          <li>1 User</li>
+          <li>100MB Space/website</li>
+          <li>Continuous deployment</li>
+          <li>No priority support</li>
         </ul>
         <button>SIGN UP</button>
       </div>
@@ -23,11 +23,11 @@
         <h2>Pro</h2>
         <div class="price">$10/month</div>
         <ul class="features">
-          <li><i class="fas fa-check-circle"></i> Unlimited Websites</li>
-          <li><i class="fas fa-check-circle"></i> 5 Users</li>
-          <li><i class="fas fa-check-circle"></i> 512MB Space/website</li>
-          <li><i class="fas fa-check-circle"></i> Continuous deployment</li>
-          <li><i class="fas fa-check-circle"></i> Email Support</li>
+          <li>Unlimited Websites</li>
+          <li>5 Users</li>
+          <li>512MB Space/website</li>
+          <li>Continuous deployment</li>
+          <li>Email Support</li>
         </ul>
         <button>BUY NOW</button>
       </div>
@@ -35,11 +35,11 @@
         <h2>Enterprise</h2>
         <div class="price">Custom Pricing</div>
         <ul class="features">
-          <li><i class="fas fa-check-circle"></i> Unlimited Websites</li>
-          <li><i class="fas fa-check-circle"></i> Unlimited Users</li>
-          <li><i class="fas fa-check-circle"></i> Unlimited Space/website</li>
-          <li><i class="fas fa-check-circle"></i> Continuous deployment</li>
-          <li><i class="fas fa-check-circle"></i> 24/7 Email support</li>
+          <li>Unlimited Websites</li>
+          <li>Unlimited Users</li>
+          <li>Unlimited Space/website</li>
+          <li>Continuous deployment</li>
+          <li>24/7 Email support</li>
         </ul>
         <button>CONTACT US</button>
       </div>
@@ -55,7 +55,6 @@ export default {
 
 <style scoped>
 .container {
-  height: calc(100% - 65px);
   display: flex;
   flex-direction: column;
   justify-content: center;
