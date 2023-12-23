@@ -1,9 +1,11 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { unstable_ClassNameGenerator as ClassNameGenerator } from "@mui/material/className";
+import LoadingProgress from "./components/LoadingProgress";
 // import { blueGrey } from "@mui/material/colors";
-import Landing from "./components/Landing";
+
+const LandingLazy = lazy(() => import("./components/Landing"));
 
 ClassNameGenerator.configure((componentName) => `rr-${componentName}`);
 
@@ -13,10 +15,11 @@ const defaultTheme = createTheme();
   const defaultTheme = createTheme({
     palette: {
       primary: {
-        main: "#455a64",
+        main:  blueGrey[700],
       },
       background: {
         paper: blueGrey[50],
+        fallback: blueGrey[300],
       },
     },
   });
@@ -26,7 +29,9 @@ const App = ({ theme }) => {
   return (
     <ThemeProvider theme={theme || defaultTheme}>
       <CssBaseline />
-      <Landing />
+      <Suspense fallback={<LoadingProgress />}>
+        <LandingLazy />
+      </Suspense>
     </ThemeProvider>
   );
 };

@@ -127,6 +127,7 @@ export default function Landing() {
                     sx={{
                       // 16:9
                       pt: "56.25%",
+                      bgcolor: (theme) => theme.palette.background.fallback,
                     }}
                     image="https://source.unsplash.com/random?wallpapers"
                   />
