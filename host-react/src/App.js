@@ -8,12 +8,12 @@ import {
 } from "react-router-dom";
 import { blueGrey } from "@mui/material/colors";
 import CssBaseline from "@mui/material/CssBaseline";
+import { unstable_ClassNameGenerator as ClassNameGenerator } from "@mui/material/className";
 import {
   createTheme,
   ThemeProvider,
   StyledEngineProvider,
 } from "@mui/material/styles";
-import { unstable_ClassNameGenerator as ClassNameGenerator } from "@mui/material/className";
 
 import LoadingProgress from "./components/LoadingProgress";
 import RemoteReactApp from "./components/RemoteReactApp";

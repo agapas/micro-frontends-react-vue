@@ -16,5 +16,5 @@ if (process.env.NODE_ENV === "development") {
   }
 }
 
-// Running through the host, so export the mount function
+// Export the mount function to run through the host
 export { mount };

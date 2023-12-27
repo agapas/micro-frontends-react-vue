@@ -2,8 +2,9 @@ import React, { lazy, Suspense } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { unstable_ClassNameGenerator as ClassNameGenerator } from "@mui/material/className";
-import LoadingProgress from "./components/LoadingProgress";
 // import { blueGrey } from "@mui/material/colors";
+
+import LoadingProgress from "./components/LoadingProgress";
 
 const LandingLazy = lazy(() => import("./components/Landing"));
 
