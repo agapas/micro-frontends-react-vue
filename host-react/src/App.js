@@ -36,16 +36,13 @@ const theme = createTheme({
   },
 });
 
+const remoteTypeObject = {
+  "/": "React",
+  "/other-remote": "Vue",
+};
+
 const Layout = () => {
   const location = useLocation();
-  const defaultRemote =
-    location.pathname.indexOf("other-remote") > -1 ? "Vue" : "React";
-
-  const [remoteType, setRemoteType] = useState(defaultRemote);
-
-  const onRemoteChange = () => {
-    setRemoteType(remoteType === "React" ? "Vue" : "React");
-  };
 
   return (
     <>
@@ -53,14 +50,11 @@ const Layout = () => {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Suspense fallback={<LoadingProgress />}>
-            <HeaderLazy
-              remoteType={remoteType}
-              onRemoteChange={onRemoteChange}
-            />
+            <HeaderLazy remoteType={remoteTypeObject[location.pathname]} />
           </Suspense>
         </ThemeProvider>
       </StyledEngineProvider>
-      <Outlet context={{ theme, remote: [remoteType, setRemoteType] }} />
+      <Outlet context={{ theme }} />
     </>
   );
 };

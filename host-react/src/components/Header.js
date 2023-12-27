@@ -5,12 +5,7 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { Link as RouterLink } from "react-router-dom";
 
-const Header = ({ remoteType, onRemoteChange }) => {
-  const onOtherRemoteClick = () => {
-    if (onRemoteChange) {
-      onRemoteChange();
-    }
-  };
+const Header = ({ remoteType }) => {
   return (
     <AppBar
       position="relative"
@@ -36,7 +31,6 @@ const Header = ({ remoteType, onRemoteChange }) => {
             sx={{ my: 1, mx: 1.5 }}
             component={RouterLink}
             to={remoteType === "React" ? "other-remote" : "/"}
-            onClick={onOtherRemoteClick}
           >
             Other Remote
           </Link>
