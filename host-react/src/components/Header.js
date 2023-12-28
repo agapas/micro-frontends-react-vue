@@ -1,8 +1,5 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
+import { AppBar, Link, Toolbar, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 const Header = ({ remoteType }) => {

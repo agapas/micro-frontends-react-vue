@@ -1,8 +1,7 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
-  Routes,
   Outlet,
   useLocation,
 } from "react-router-dom";
@@ -18,6 +17,7 @@ import {
 import LoadingProgress from "./components/LoadingProgress";
 import RemoteReactApp from "./components/RemoteReactApp";
 import RemoteVueApp from "./components/RemoteVueApp";
+import NotFound from "./components/NotFound";
 
 const HeaderLazy = lazy(() => import("./components/Header"));
 
@@ -65,12 +65,11 @@ const router = createBrowserRouter([
     children: [
       { path: "/", Component: RemoteReactApp },
       { path: "other-remote", Component: RemoteVueApp },
-      { path: "*", Component: Root },
+      { path: "*", Component: NotFound },
     ],
   },
 ]);
 
 const HostApp = () => <RouterProvider router={router} />;
-const Root = () => <Routes />;
 
 export default HostApp;
