@@ -23,8 +23,8 @@ As the content example, the project uses slightly modified free templates:
 The routing is made with the [React Router 6 (data router)](https://reactrouter.com/en/6.21.0/upgrading/v6-data). Basically, user can navigate between different sub apps via "Other Remote" button, and additionally he can back to the landing page (remote-react app) via "The Remote in ..." title in the header:
 
 <p align="middle">
-  <img src="https://github.com/agapas/micro-frontends-react-vue/blob/main/assets/reactModule.jpg" width="480"/>
-  <img src="https://github.com/agapas/micro-frontends-react-vue/blob/main/assets/vueModule.jpg" width="480"/>
+  <img src="https://github.com/agapas/micro-frontends-react-vue/blob/main/assets/reactModule.jpg" width="45%"/>
+  <img src="https://github.com/agapas/micro-frontends-react-vue/blob/main/assets/vueModule.jpg" width="45%"/>
 </p>
 
 ### Additional info:
