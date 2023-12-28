@@ -15,7 +15,7 @@ const prodConfig = {
     new ModuleFederationPlugin({
       name: "host_react",
       remotes: {
-        rr: `remote_react${domain}/rr/latest/remoteEntry.js`,
+        rr: `remote_react@${domain}/rr/latest/remoteEntry.js`,
         rv: `remote_vue@${domain}/rv/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
