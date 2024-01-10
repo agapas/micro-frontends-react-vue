@@ -1,6 +1,6 @@
 # micro-frontends-react-vue
 
-Micro-frontends can be implemented in a number of ways. This POC project shows an example of using the [Module Federation](https://webpack.js.org/plugins/) to bundle micro-frontends together and load them into a single web application. And the run-time integration is used as it's the most flexible and performant solution right now.
+Micro-frontends can be implemented in a number of ways. This POC project shows an example of using the [Module Federation Plugin](https://webpack.js.org/plugins/module-federation-plugin/) to bundle micro-frontends together and load them into a single web application. And the run-time integration is used as it's the most flexible and performant solution right now.
 
 The POC contains micro-frontends with different tech stacks (used React and Vue, but any other framework could work here), with some shared dependencies (like React or Material UI).
 
@@ -84,7 +84,7 @@ Install dependencies separately in each sub app (host-react, remote-react and re
   - run the Remote apps (follow the steps in the point above for both, remote-react and remote-vue)
   - go to the Host app directory
   - start dev server with a command: `npm start` or `yarn start`
-  - check [http://localhost:8080](http://localhost:8080) in your browser (you should see the content of all micro-frontends there)
+  - check [localhost:8080](http://localhost:8080) in your browser (you should see the content of all micro-frontends there)
 
 **A Note:** The apps will automatically reload if you change the source files. The only exception is when you change webpack config files, so you will need restart dev servers to see these changes.
 
